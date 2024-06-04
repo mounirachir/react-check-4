@@ -1,4 +1,3 @@
-// AddMovieForm.js
 import React, { useState } from "react";
 
 const AddMovieForm = ({ onAddMovie }) => {
@@ -6,15 +5,23 @@ const AddMovieForm = ({ onAddMovie }) => {
   const [description, setDescription] = useState("");
   const [posterURL, setPosterURL] = useState("");
   const [rating, setRating] = useState("");
+  const [trailerURL, setTrailerURL] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !description || !posterURL || !rating) return;
-    onAddMovie({ title, description, posterURL, rating: parseFloat(rating) });
+    if (!title || !description || !posterURL || !rating || !trailerURL) return;
+    onAddMovie({
+      title,
+      description,
+      posterURL,
+      rating: parseFloat(rating),
+      trailerURL,
+    });
     setTitle("");
     setDescription("");
     setPosterURL("");
     setRating("");
+    setTrailerURL("");
   };
 
   return (
@@ -42,6 +49,12 @@ const AddMovieForm = ({ onAddMovie }) => {
         placeholder="Rating"
         value={rating}
         onChange={(e) => setRating(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Trailer URL"
+        value={trailerURL}
+        onChange={(e) => setTrailerURL(e.target.value)}
       />
       <button type="submit">Add Movie</button>
     </form>

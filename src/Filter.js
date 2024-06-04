@@ -1,4 +1,3 @@
-// Filter.js
 import React, { useState } from "react";
 
 const Filter = ({ onFilter }) => {
